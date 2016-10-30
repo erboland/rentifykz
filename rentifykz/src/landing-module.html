@@ -11,33 +11,38 @@
 */
 
       .head{
-        height: 100vh
+        height: 70vh
       }
 
       .category {
-        width: 200px;
-        height: 250px;
+        width: 250px;
+        height: 300px;
         color: white;
         background-color: var(--app-secondary-color);
         font-size: 30px;
-        text-align: center
+        text-align: center;
+        font-weight: 600;
       }
 
       .cats{
-        color:
+        color: var(--paper-grey-600)
       }
+
     </style>
 
     <iron-grid>
-      <div class="head offset-l4 l4">
-        <h1 style="text-align:center">RENTIFY.KZ - platform for renting stuff</h1>
-        <paper-input label="Что вы хотите aрендовать?" no-label-float class="mw">
-          <iron-icon icon="icons:search" prefix></iron-icon>
-        </paper-input>
-      </div>
-      <div class="offset-l2 l8 mw">
+      <div class="head offset-l1 l10 layout vertical horizontal center-center">
+        <div style="text-align:center;font-size:50px">RENTIFY.KZ - арендуйте мечту</div>
+        <div style="width:400px">
+          <paper-input label="Что вы хотите aрендовать?" no-label-float class="mw">
+            <iron-icon icon="icons:search" prefix></iron-icon>
+          </paper-input>
+        </div>
 
-        <h1 style="cats">Категории</h1>
+      </div>
+      <div class="offset-l1 l10 mw">
+
+        <h1 class="cats">Категории</h1>
         <iron-list class="mw" items="[[categories]]" as="category" grid>
           <template>
             <div class="wrapper">
@@ -48,6 +53,22 @@
 
           </template>
         </iron-list>
+
+      </div>
+      <div class="offset-l1 l10 mw">
+
+        <h1 class="cats">Категории</h1>
+        <iron-list class="mw" items="[[categories]]" as="category" grid>
+          <template>
+            <div class="wrapper">
+              <paper-card class=" layout vertical horizontal center-center">
+                [[category]]
+              </paper-card>
+            </div>
+
+          </template>
+        </iron-list>
+
       </div>
     </iron-grid>
   </template>
