@@ -28,13 +28,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="rentify-module">
   <template>
-    <style>
+    <style include="shared-styles">
       :host {
         --app-primary-color: #e66162;
         --app-secondary-color: #3F51B5;
@@ -51,9 +52,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       footer{
+        margin-top:30px;
         height: 200px;
         background-color: black;
         color: white
+      }
+
+      .add{
+/*        background-color: var(--app-secondary-color);*/
+        border-radius: 15px;
+        border: solid 2px white;
+        --paper-button:{
+          height: 40px;
+          font-size: 18px;
+          font-weight: 600
+        }
       }
     </style>
 
@@ -70,6 +83,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header condenses reveals effects="waterfall">
           <app-toolbar>
             <div main-title>RENTIFY.KZ</div>
+            <a href="/create" class="link"><paper-button class="add">Сдать в аренду</paper-button></a>
           </app-toolbar>
         </app-header>
         <iron-pages
