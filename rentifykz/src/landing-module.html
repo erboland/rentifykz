@@ -4,11 +4,21 @@
 <dom-module id="landing-module">
   <template>
     <style>
-
+      paper-input{
+        width: 100%
+      }
     </style>
 
-    <h1 style="text-align:center">elgo</h1>
-    <paper-input></paper-input>
+    <iron-grid>
+      <div class="head offset-l4 l4">
+        <h1 style="text-align:center">RENTIFY.KZ - platform for renting stuff</h1>
+        <paper-input label="Что вы хотите aрендовать?" no-label-float>
+          <iron-icon icon="icons:search" prefix></iron-icon>
+        </paper-input>
+      </div>
+
+    </iron-grid>
+
   </template>
 
   <script>
