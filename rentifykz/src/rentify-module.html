@@ -26,6 +26,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/iron-list/iron-list.html">
 
+<link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
+
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
@@ -34,7 +36,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 
-<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animations.html">
 
 <link rel="import" href="shared-styles.html">
 
@@ -91,17 +94,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <a href="/create" class="link"><paper-button class="add">Сдать в аренду</paper-button></a>
           </app-toolbar>
         </app-header>
-        <iron-pages
-            selected="[[page]]"
-            attr-for-selected="name"
-            fallback-selection="view404"
-            role="main"
-            >
+        <neon-animated-pages id="pages" selected="[[page]]" attr-for-selected="name" exit-animation="slide-left-animation" entry-animation="slide-from-right-animation">
           <landing-module name="landing"></landing-module>
-          
           <create-module name="create"></create-module>
-          
-        </iron-pages>
+        </neon-animated-pages>
+<!--
         <footer>
           <iron-grid>
             <div class="l4">
@@ -115,6 +112,7 @@ fdsfs
             </div>
           </iron-grid>
         </footer>
+-->
       </app-header-layout>
 
     </app-drawer-layout>
