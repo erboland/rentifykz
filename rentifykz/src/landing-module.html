@@ -1,32 +1,83 @@
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
-<link rel="import" href="shared-styles.html">
 
 <dom-module id="landing-module">
   <template>
-    <style>
-      paper-input{
-        width: 100%
+    <style include="shared-styles">
+
+/*
+      iron-grid{
+        background-color: var(--app-secondary-color)
+      }
+*/
+
+      .head{
+        height: 100vh
+      }
+
+      .category {
+        width: 200px;
+        height: 250px;
+        color: white;
+        background-color: var(--app-secondary-color);
+        font-size: 30px;
+        text-align: center
+      }
+
+      .cats{
+        color:
       }
     </style>
 
     <iron-grid>
       <div class="head offset-l4 l4">
         <h1 style="text-align:center">RENTIFY.KZ - platform for renting stuff</h1>
-        <paper-input label="Что вы хотите aрендовать?" no-label-float>
+        <paper-input label="Что вы хотите aрендовать?" no-label-float class="mw">
           <iron-icon icon="icons:search" prefix></iron-icon>
         </paper-input>
       </div>
+      <div class="offset-l2 l8 mw">
 
+        <h1 style="cats">Категории</h1>
+        <iron-list class="mw" items="[[categories]]" as="category" grid>
+          <template>
+            <div class="wrapper">
+              <paper-card class="category layout vertical horizontal center-center">
+                [[category]]
+              </paper-card>
+            </div>
+
+          </template>
+        </iron-list>
+      </div>
     </iron-grid>
-
   </template>
 
   <script>
     Polymer({
       is: 'landing-module',
 
+      properties:{
+        categories: {
+          type: Array,
 
+          value:[
+            'Автомобили',
+            'Кальян',
+            'Одежда',
+            'Игровые приставки',
+            'Велосипеды',
+            'Футбольные поля',
 
+          ]
+        }
+      },
+
+      attached: function(){
+        const list = Polymer.dom(this.root).querySelector('iron-list');
+        if(list){
+          list.scrollTarget = this.ownerDocument.documentElement;
+        }
+      }
     });
   </script>
 </dom-module>
