@@ -10,37 +10,53 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/vaadin-combo-box/vaadin-combo-box.html">
+<link rel="import" href="../bower_components/paper-tags-input/paper-tags-input.html">
+<link rel="import" href="../bower_components/paper-tags-input/tag-item.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
 
 
 <dom-module id="create-module">
   <template>
     <style include="shared-styles">
-      
+        
     </style>
-    <<paper-card heading="View">
-    <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-      <paper-button raised onclick=modal.open()>Just button</paper-button>
-      <paper-dialog id="modal" modal>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <div class="buttons">
-    <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
-  </div>
+    
+    <iron-grid>
+        <div class="wrapper offset-l2 l8">
+        <paper-card heading="View" class="mw">
+      <paper-input label="Название"></paper-input>
+<vaadin-combo-box label="Element"
+    items='["Автомобили",
+            "Кальян",
+            "Одежда",
+            "Игровые приставки",
+            "Велосипеды",
+            "Футбольные поля"]'>
+</vaadin-combo-box>
+      <paper-textarea label="Описание товара"></paper-textarea>
+      <paper-input label="Ссылка на видео о товаре"></paper-input>
+      
+      <paper-tags-input placeholder="Добавьте теги товара" tag-color="red" empty-error-message="Oops. Tag could not be empty" label="Теги товара" >
+          
+      </paper-tags-input>
+  <paper-button raised >Just button</paper-button>
 </paper-dialog>
-    </div>
-    </paper-card>
+   </paper-card> </div>
+    </iron-grid>
+     
+   
+    
   </template>
 
   <script>
     Polymer({
       is: 'create-module',
         
-        attached: function(){
-            alert("lol")  
-        } 
+//        attached: function(){
+//            alert("lol")  
+//        } 
     });
+      
   </script>
 </dom-module>
