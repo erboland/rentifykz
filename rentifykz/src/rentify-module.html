@@ -24,9 +24,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-grid/iron-grid.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/iron-list/iron-list.html">
 
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="shared-styles.html">
 
 <dom-module id="rentify-module">
   <template>
@@ -44,6 +48,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
       app-header paper-icon-button {
         --paper-icon-button-ink-color: white;
+      }
+
+      footer{
+        height: 200px;
+        background-color: black;
+        color: white
       }
     </style>
 
@@ -67,11 +77,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             attr-for-selected="name"
             fallback-selection="view404"
             role="main"
-            style="width:100%"
             >
           <landing-module name="landing"></landing-module>
         </iron-pages>
+        <footer>
+          <iron-grid>
+            <div class="l4">
+fdsf
+            </div>
+            <div class="l4">
+fsdf
+            </div>
+            <div class="l4">
+fdsfs
+            </div>
+          </iron-grid>
+        </footer>
       </app-header-layout>
+
     </app-drawer-layout>
   </template>
 
