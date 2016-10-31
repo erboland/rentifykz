@@ -24,9 +24,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     
     <iron-grid>
         <div class="wrapper offset-l2 l8">
-        <paper-card heading="View" class="mw">
-      <paper-input label="Название"></paper-input>
-<vaadin-combo-box label="Element"
+        <paper-card heading="Добавление товара" class="mw">
+      <paper-input label="Название"><iron-icon icon="icons:content-paste" prefix></iron-icon>
+</paper-input>
+<vaadin-combo-box label="Категория"
     items='["Автомобили",
             "Кальян",
             "Одежда",
@@ -34,11 +35,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             "Велосипеды",
             "Футбольные поля"]'>
 </vaadin-combo-box>
-      <paper-textarea label="Описание товара"></paper-textarea>
-      <paper-input label="Ссылка на видео о товаре"></paper-input>
-      
-      <paper-tags-input placeholder="Добавьте теги товара" tag-color="red" empty-error-message="Oops. Tag could not be empty" label="Теги товара" ></paper-tags-input>
-  <paper-button raised >Just button</paper-button>
+      <paper-textarea label="Описание товара">
+      <iron-icon icon="icons:description" prefix></iron-icon>
+</paper-textarea>
+      <paper-input label="Ссылка на видео о товаре"><iron-icon icon="icons:search" prefix></iron-icon>
+</paper-input>
+      <paper-tags-input placeholder="Добавьте теги товара" empty-error-message="Oops. Tag could not be empty" label="Теги товара"  ><iron-icon icon="icons:search" prefix></iron-icon>
+</paper-tags-input>
+      <vaadin-combo-box label="Состояние" items='["Отличное", "Хорошее"]'></vaadin-combo-box>
+      <paper-input label="Цена вещи в продаже"></paper-input>
+      <h1>Периоды аренды и стоимость</h1>
+      <div><h4>За</h4> 
+           <paper-input label="Колличество">
+               <paper-input label="Месяц"></paper-input>
+           </paper-input>
+            </div>      
+  <paper-button raised>Just button</paper-button>
 </paper-dialog>
    </paper-card> </div>
     </iron-grid>
