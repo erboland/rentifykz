@@ -133,8 +133,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _pageChanged: function(page) {
         // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl(page + '-module.html');
-        this.importHref(resolvedPageUrl, null, this._showPage404, true);
+        var resolvedPageUrl = this.resolveUrl(page + '-module.html')
+        this.importHref(resolvedPageUrl, null, this._showPage404, true)
       },
 
       _showPage404: function() {
