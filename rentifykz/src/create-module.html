@@ -10,34 +10,92 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/vaadin-combo-box/vaadin-combo-box.html">
+<link rel="import" href="../bower_components/paper-tags-input/paper-tags-input.html">
+<link rel="import" href="../bower_components/paper-tags-input/tag-item.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
 
 
 <dom-module id="create-module">
   <template>
     <style include="shared-styles">
-
+    :host{
+      width: 100%
+    }
+    .prefix{
+      color: var(--paper-grey-500);
+      margin-left: 4px
+    }
+    paper-input,paper-textarea,vaadin-combo-box, paper-tags-input {
+      width:100%;
+      border:2px solid var(--paper-grey-300);
+      border-radius: 4px;
+      background-color: white;
+      
+          --paper-input-container-underline:{
+          display: none;
+          height:0px
+        }
+                --paper-input-container-focus-color:rgba(0, 0, 0, 0.0);
+      }
+    }
+    .wrapper{
+          border-bottom:2px solid var(--paper-grey-300);
+      align-items: center;
+    }
     </style>
-
-    <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-      <paper-button raised onclick=modal.open()>Just button</paper-button>
-      <paper-dialog id="modal" modal>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <div class="buttons">
-    <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
-  </div>
+    
+    <iron-grid>
+    <h2 class="label offset-l2">Добавление товара</h2>
+        <div class="wrapper offset-l2 l8">
+<div class="label">Название</div>
+      <paper-input no-label-float label="Название"><iron-icon icon="icons:content-paste" prefix></iron-icon>
+</paper-input>
+<div class="label">Категория</div>
+<vaadin-combo-box no-label-float label="Категория"
+    items='["Автомобили",
+            "Кальян",
+            "Одежда",
+            "Игровые приставки",
+            "Велосипеды",
+            "Футбольные поля"]'>
+</vaadin-combo-box>
+<div class="label">Описание</div>
+      <paper-textarea no-label-float label="Описание товара">
+      <iron-icon icon="icons:description" prefix></iron-icon>
+</paper-textarea>
+<div class="label">Видео</div>
+      <paper-input no-label-float label="Ссылка на видео о товаре"><iron-icon icon="icons:search" prefix></iron-icon>
+</paper-input>
+<div class="label">Теги</div>
+      <paper-tags-input no-label-float tag-color="black" placeholder="Добавьте теги товара"  empty-error-message="Oops. Tag could not be empty" tags="{{tags_list}}">><iron-icon icon="icons:search" prefix></iron-icon>
+      <tag-item tag-color="black"></tag-item>
+</paper-tags-input>
+<div class="label">Состояние</div>
+      <vaadin-combo-box no-label-float label="Состояние" items='["Отличное", "Хорошее"]'></vaadin-combo-box>
+      <div class="label">Цена вещи</div>
+      <paper-input no-label-float label="Цена вещи в продаже"></paper-input>
+      
+          
+  <paper-button raised>Just button</paper-button>
 </paper-dialog>
-    </div>
+   </div>
+    </iron-grid>
+     
+   
+    
   </template>
 
   <script>
     Polymer({
       is: 'create-module',
-
-
+        
+//        attached: function(){
+//            alert("lol")  
+//        } 
     });
+      
   </script>
 </dom-module>
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security Status Help
