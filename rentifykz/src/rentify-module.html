@@ -39,6 +39,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/neon-animation/neon-animations.html">
 
 <link rel="import" href="shared-styles.html">
+<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
 
 <dom-module id="rentify-module">
   <template>
@@ -46,35 +47,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host {
         --app-primary-color: #e66162;
         --app-secondary-color: #3F51B5;
-
         display: block;
-      }
-
-      app-header {
-        color: #fff;
-        background-color: var(--app-primary-color);
-      }
-      app-header paper-icon-button {
-        --paper-icon-button-ink-color: white;
       }
 
       footer{
         margin-top:30px;
         height: 200px;
         background-color: black;
-        color: white
+        color: white;
+
+        bottom: 0
       }
 
       .add{
-/*        background-color: var(--app-secondary-color);*/
-        border-radius: 15px;
-        border: solid 2px white;
-        --paper-button:{
-          height: 40px;
-          font-size: 18px;
-          font-weight: 600
-        }
+        color: #ff5858;
+        text-decoration: none
       }
+
+      app-toolbar{
+        color: var(--paper-grey-500);
+
+      }
+
+      app-header{
+        padding: 0px 10% 0px 10%;
+        background-color: white;
+        border-bottom: 1px solid var(--paper-grey-300)
+      }
+
+      paper-button {
+        color: var(--paper-grey-300)
+      }
+
     </style>
 
     <app-location route="{{route}}"></app-location>
@@ -84,37 +88,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
 
-    <app-drawer-layout fullbleed>
-      <app-header-layout has-scrolling-region>
+    <app-header-layout fullbreed>
 
-        <app-header condenses reveals effects="waterfall">
-          <app-toolbar>
-            <div main-title>RENTIFY.KZ</div>
-            <a href="/create" class="link"><paper-button class="add">Сдать в аренду</paper-button></a>
-          </app-toolbar>
-        </app-header>
-        <neon-animated-pages id="pages" selected="[[page]]" attr-for-selected="name" exit-animation="slide-left-animation" entry-animation="slide-from-right-animation">
-          <landing-module name="landing"></landing-module>
-          <create-module name="create"></create-module>
-        </neon-animated-pages>
-<!--
-        <footer>
-          <iron-grid>
-            <div class="l4">
-fdsf
-            </div>
-            <div class="l4">
-fsdf
-            </div>
-            <div class="l4">
-fdsfs
-            </div>
-          </iron-grid>
-        </footer>
--->
-      </app-header-layout>
+      <app-header reveals effect=waterfall condences>
+        <app-toolbar>
+          <div main-title id=title style="font-family: 'Merriweather';">RENTIFY</div>
+          <a href="/create" class="add">Сдать в аренду</a>
+        </app-toolbar>
 
-    </app-drawer-layout>
+        <div>
+
+        </div>
+
+      </app-header>
+
+    </app-header-layout>
   </template>
 
   <script>
@@ -127,6 +115,11 @@ fdsfs
           reflectToAttribute: true,
           observer: '_pageChanged'
         }
+      },
+
+
+      attached:function(){
+
       },
 
       observers: [
