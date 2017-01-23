@@ -83,7 +83,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <app-location route="{{route}}"></app-location>
     <app-route
-    
+
         route="{{route}}"
         pattern="/:page"
         data="{{routeData}}"
@@ -97,9 +97,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a href="/create" class="add">Сдать в аренду</a>
         </app-toolbar>
 
-        <div>
-
-        </div>
+        <iron-pages attr-for-selected=name selected=page>
+          <create-module name=create></create-module>
+        </iron-pages>
 
       </app-header>
 
