@@ -43,13 +43,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           border-bottom:2px solid var(--paper-grey-300);
       align-items: center;
     }
+    iron-icon{
+    color: var (--paper-grey-300)
+    }
     </style>
     
     <iron-grid>
     <h2 class="label offset-l2">Добавление товара</h2>
         <div class="wrapper offset-l2 l8">
 <div class="label">Название</div>
-      <paper-input no-label-float label="Название"><iron-icon icon="icons:content-paste" prefix></iron-icon>
+      <paper-input no-label-float label="Название"><iron-icon icon="icons:content-paste"  prefix></iron-icon>
 </paper-input>
 <div class="label">Категория</div>
 <vaadin-combo-box no-label-float label="Категория"

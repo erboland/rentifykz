@@ -21,9 +21,15 @@
     "paper-elements": "PolymerElements/paper-elements#^1.0.7",
     "iron-grid": "*",
     "polymerfire": "firebase/polymerfire#^0.10.2",
-    "neon-animation": "PolymerElements/neon-animation#^1.2.4"
+    "neon-animation": "PolymerElements/neon-animation#^1.2.4",
+    "paper-tags-input": "^1.2.5",
+    "vaadin-combo-box": "^1.2.0"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
+  },
+  "resolutions": {
+    "paper-icon-button": "^1.0.0",
+    "paper-input": "^1.0.0"
   }
 }
