@@ -67,15 +67,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: white
       }
 
-      .add{
-/*        background-color: var(--app-secondary-color);*/
-        border-radius: 15px;
-        border: solid 2px white;
-        --paper-button:{
-          height: 40px;
-          font-size: 18px;
-          font-weight: 600
-        }
+ .add{
+  /*        background-color: var(--app-secondary-color);*/
+          border-radius: 15px;
+          border: solid 2px white;
+          --paper-button:{
+            height: 40px;
+            font-size: 18px;
+            font-weight: 600
+          } 
       }
     </style>
 
@@ -98,6 +98,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <neon-animated-pages id="pages" selected="[[page]]" attr-for-selected="name" exit-animation="slide-left-animation" entry-animation="slide-from-right-animation">
           <landing-module name="landing"></landing-module>
           <create-module name="create"></create-module>
+          <registration-module name="registration"></registration-module> 
         </neon-animated-pages>
 <!--
         <footer>
