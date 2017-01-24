@@ -79,6 +79,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: var(--paper-grey-300)
       }
 
+      iron-pages {
+        height: 100%
+      }
+
     </style>
 
     <app-location route="{{route}}"></app-location>
@@ -96,12 +100,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div main-title id=title style="font-family: 'Merriweather';">RENTIFY</div>
           <a href="/create" class="add">Сдать в аренду</a>
         </app-toolbar>
+      </app-header>
 
-        <iron-pages attr-for-selected=name selected=[[page]]>
+
+       <iron-pages attr-for-selected=name selected=[[page]]>
           <create-module name=create></create-module>
         </iron-pages>
-
-      </app-header>
 
     </app-header-layout>
   </template>
