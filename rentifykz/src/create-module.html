@@ -14,6 +14,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-tags-input/paper-tags-input.html">
 <link rel="import" href="../bower_components/paper-tags-input/tag-item.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-input/paper-textarea.html">
 
 
 <dom-module id="create-module">
@@ -47,10 +48,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     iron-icon{
     color: var (--paper-grey-300)
     }
+    #combobox1 {
+    --vaadin-combo-box-overlay-max-height: 100%;
+  }
+
     </style>
     
     <iron-grid>
-    <h2 class="label offset-l2">Добавление товара</h2>
+    <h2 class="offset-l2" style="color: black, font-width: bold">Добавление товара</h2>
         <div class="wrapper offset-l2 l8">
 <div class="label">Название</div>
       <paper-input no-label-float label="Название"><iron-icon icon="icons:content-paste"  prefix></iron-icon>
@@ -65,9 +70,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             "Футбольные поля"]'>
 </vaadin-combo-box>
 <div class="label">Описание</div>
-      <paper-textarea no-label-float label="Описание товара">
-      <iron-icon icon="icons:description" prefix></iron-icon>
-</paper-textarea>
+<paper-textarea no-label-float label="Описание товара" rows="4"><iron-icon icon="icons:assignment" prefix></iron-icon></paper-textarea>
 <div class="label">Видео</div>
       <paper-input no-label-float label="Ссылка на видео о товаре"><iron-icon icon="icons:search" prefix></iron-icon>
 </paper-input>
@@ -79,11 +82,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <vaadin-combo-box no-label-float label="Состояние" items='["Отличное", "Хорошее"]'></vaadin-combo-box>
       <div class="label">Цена вещи</div>
       <paper-input no-label-float label="Цена вещи в продаже"></paper-input>
-      <div class="label" style="width: 100%">Колличество</div> 
-      <vaadin-combo-box no-label-float items='["1", "2", "3", "4"]' style="width: 30%"></vaadin-combo-box>
-      <div style="width: 100%">lol</div>
+      
+      <div class="label"style="float:left" >Колличество </div>
+      <div class="label"style="float:right; margin-left: 58%"> Месяцы</div>
+      <vaadin-combo-box no-label-float items='["1", "2", "3", "4"]' style="width: 40%" class="offset-l0"></vaadin-combo-box>
+      <vaadin-combo-box no-label-float items=["1","2","3","4","5","6"] style=" width: 40%; margin-right:19%" ></vaadin-combo-box>
           
-  <paper-button raised class="offset-l4">Just button</paper-button>
+  <paper-button raised class="offset-l5" style="margin-bottom: 20px;margin-top:20px; height: 50px">Just button</paper-button>
+
 </paper-dialog>
    </div>
     </iron-grid>
