@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="login-module.html">
 <dom-module id="registration-module">
 <template>
 <style include="shared-styles">
@@ -49,6 +50,12 @@ color: #fff;
     .label {
     width:100%
     }
+      .button{
+      width: 100%;
+      margin: 0;
+      margin-top: 8px;
+
+    }
 </style>
 
 <div class="wrapper">
@@ -62,6 +69,7 @@ color: #fff;
 <paper-button style="width: 100%; height: 46px; background-color: #ff5858; color: #fff; border-radius: 4px 4px 0px 0px; margin-top:20px">Registrate</paper-button>
 <paper-button class="btn-facebook">Sign in with Facebook</paper-button>
 <paper-button class="btn-google"> Sign in with Google</paper-button>
+<paper-button on-tap="right" class="button" style=" background-color: #fff; color: #ff5858">Войти</paper-button>
 </div>
 
 </div>
@@ -70,7 +78,10 @@ color: #fff;
 <script>
 Polymer({
 is:"registration-module",
-//  this.$.form.validate()=true
+    right:function(){
+      this.fire('back')
+
+    }
 });
 </script>
 </dom-module>

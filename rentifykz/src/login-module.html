@@ -6,7 +6,7 @@
 <link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
 <link rel="import" href="behaviors/database-behavior.html">
 <link rel="import" href="registration-module.html">
-<link rel="import" href="rentify-module.html">
+
 
 <dom-module id="login-module">
   <template>
@@ -145,8 +145,11 @@ width:100%;
 
       left: function(){
 this.$.pages.selected=1
-console.log("1")
-this.$.dialog.style="height: 75%"
+
+      },
+      right: function() {
+this.$.pages.selected=0
+
       },
 
       login: function(){
