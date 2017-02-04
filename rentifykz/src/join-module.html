@@ -117,7 +117,6 @@
     },
 
     behaviors:[
-      LocalizeBehavior,
       DatabaseBehavior
     ],
 
@@ -176,9 +175,7 @@
             info:{
               link: user.uid,
               name: this.Name,
-              surname: this.surname,
-              image: 'https://firebasestorage.googleapis.com/v0/b/campus-3320b.appspot.com/o/Avatars%2FDeelProfile.png?alt=media&token=64c39a16-6de9-469a-be69-9f429af21a54',
-              type: this.type,
+              surname: this.surname
             },
             online: true,
             school:this.school,
@@ -186,8 +183,7 @@
           })
           Cookies.set('id',user.uid,{expires: 10000,path:''});
           Cookies.set('link',user.uid,{expires: 10000,path:''});
-          window.location = '/settings'
-        }).catch(function(error){
+      }).catch(function(error){
           this.fire('open-toast',{
             text: error
           })

@@ -20,8 +20,7 @@
     }
 
     paper-input {
-
-width:100%;
+      width:100%;
       border:2px solid var(--paper-grey-300);
       border-radius: 4px;
       background-color: white;
@@ -89,19 +88,14 @@ width:100%;
           <div class="title wrapper">
             <div style="font-size:24px; font-color:black; text-align:center">Арендуй мечту</div>
           </div>
-          
-
-              <form is="iron-form" id="form" style="padding-right: calc(7% + 4px); padding-left: 7%">
-                <paper-input  on-keydown="checkForEnter" id="email" name="email" no-label-float label="Почта" value="{{email}}" required style="border-bottom: 1px"></paper-input>
+          <form is="iron-form" id="form" style="padding-right: calc(7% + 4px); padding-left: 7%">
+                  <paper-input  on-keydown="checkForEnter" id="email" name="email" no-label-float label="Почта" value="{{email}}" required style="border-bottom: 1px"></paper-input>
                 <paper-input  on-keydown="checkForEnter" id="password" name="password" no-label-float label="Пароль" type="password" value="{{password}}" required></paper-input>
               </form>
               <div  style="padding-right: 7%; padding-left: 7%">
               <paper-button on-tap="login" class="button" style="background-color: #ff5858; color: #fff">Войти</paper-button>
               <paper-button on-tap="left" class="button" style=" background-color: #fff; color: #ff5858" href="registration-module.html">Создать аккаунт</paper-button>
           </div>
-
-
-
         </div>
       </div>
   </iron-grid>

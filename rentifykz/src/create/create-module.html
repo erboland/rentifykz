@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/paper-tags-input/paper-tags-input.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="image-module.html">
 
 <dom-module id="create-module">
   <template>
@@ -33,10 +34,10 @@
 
       #imageContainer{
         border: dashed 2px var(--paper-grey-300);
-
       }
 
       paper-tags-input {
+
         border: dashed 2px var(--paper-grey-300);
         --paper-input-container-underline:{
           display: none;
@@ -47,6 +48,22 @@
           margin-left: 4px;
         }
         --paper-input-container-focus-color:rgba(0, 0, 0, 0.0);
+
+      }
+
+      #intervals{
+        border-bottom-right-radius: 0px;
+        border-top-right-radius: 0px;
+        border-right: none;
+        width: 60%;
+
+      }
+
+      #price{
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-left: none;
+        width: 40%
       }
     </style>
 
@@ -54,11 +71,11 @@
       <div class="wrapper offset-l3 l6 mw">
         <h1 class="mw">Новый товар</h1>
         <div class="label">Название</div>
-        <paper-input no-label-float label="Название"><iron-icon icon="icons:content-paste"  prefix></iron-icon>
+        <paper-input no-label-float label="Название">
         </paper-input>
         <div class="label">Категория</div>
         <vaadin-combo-box no-label-float label="Категория"
-                          items=[[categories]]>
+                          items=[[types]] value=[[type]]>
         </vaadin-combo-box>
         <div class="label">Описание</div>
         <paper-textarea no-label-float label="Описание товара" max-rows=5 rows="2"><iron-icon icon="icons:assignment" prefix></iron-icon></paper-textarea>
@@ -67,18 +84,35 @@
         <vaadin-combo-box no-label-float label="Состояние"></vaadin-combo-box>
         <div class="label">Цена вещи</div>
         <paper-input no-label-float label="Цена вещи в продаже"></paper-input>
+        <div class="label">Длительноть и стоимость аренды</div>
+        <div class="layout horizontal mw">
+
+          <vaadin-combo-box item-label-path="val" item-value-path="key"  id=intervals  no-label-float label="интервал" items=[[intervals]] value=[[interval]]>
+            <div prefix style="margin:0px 8px">За</div>
+            <div suffix style="margin:0px 8px">я беру</div>
+          </vaadin-combo-box>
+          <paper-input id=price no-label-float label="цена">
+            <div suffix style="padding-right:16px">тг.</div>
+          </paper-input>
+        </div>
 
         <div class="label">Изображения</div>
         <div id=imageContainer class="wrapper mw">
           <label for="file"><paper-button noink class="main-button">Загрузить</paper-button></label><input type="file" value="upload" id="file" style="position:absolute; visibility:hidden"/>
           <iron-list items=[[images]] as=image grid>
-            <template></template>
+            <template>
+              <div>
+                <image-module image=[[image]]></image-module>
+              </div>
+            </template>
           </iron-list>
         </div>
 
         <div class="label">Теги</div>
         <paper-tags-input class="mw" no-label-float tag-color="black" placeholder="Добавьте теги товара" tags="{{tags_list}}">><iron-icon icon="icons:search" prefix></iron-icon>
         </paper-tags-input>
+
+        <paper-button class="main-button" style="margin: 16px 0px">Добавить товар</paper-button>
       </div>
     </iron-grid>
   </template>
@@ -89,7 +123,7 @@
 
       properties:{
 
-        categories:{
+        types:{
           type: Array,
           value: ["Автомобили",
                   "Кальян",
@@ -99,7 +133,22 @@
                   "Футбольные поля"]
         },
 
+        intervals:{
+          type: Array,
+          value:[
+            {
+              key: 'week',
+              val: '1 неделю'
+            }
+          ]
+        },
+
         images:{
+          type: Array,
+          value:[]
+        },
+
+        tags:{
           type: Array,
           value:[]
         }
@@ -111,6 +160,7 @@
       ],
 
       attached: function(){
+
         this.$.file.addEventListener('change',(e)=>{
 
           if(e.target.files[0]){
@@ -145,13 +195,13 @@
       },
 
       getHeight:function(url,callback){
-        const img = new Image();
+        const img = new Image()
 
         img.onload = function(){
           const ratio = this.width / this.height
           callback(ratio)
         };
-        img.src = url;
+        img.src = url
       },
 
       newId: function(){

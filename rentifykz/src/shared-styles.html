@@ -39,10 +39,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-left: 4px
       }
 
+      paper-input,paper-textarea,vaadin-combo-box{
+        width:100%;
+        border:2px solid var(--paper-grey-300);
+        border-radius: 4px;
+        background-color: white;
+        --paper-input-container-underline:{
+          display: none;
+          height:0px
+        }
+
+        --paper-input-container:{
+          margin-left: 4px;
+        }
+        --paper-input-container-focus-color:rgba(0, 0, 0, 0.0);
+      }
+
       .main-button{
         background-color: var(--app-primary-color);
         color: white;
         height: 36px;
+        font-size: 16px;
         margin-left: 0;
         font-weight: 500
       }

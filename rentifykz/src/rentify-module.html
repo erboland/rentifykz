@@ -37,6 +37,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-dialog-behavior/paper-dialog-behavior.html">
 <link rel="import" href="../bower_components/paper-dialog-behavior/paper-dialog-shared-styles.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
 
 <link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animations.html">
@@ -53,7 +54,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         --app-primary-color: #e66162;
-        --app-secondary-color: #3F51B5;
         display: block;
       }
 
@@ -90,10 +90,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       iron-pages {
         height: 100%
       }
+
       #join {
         color: #ff5858;
         --paper-button-ink-color: var(--paper-pink-a200);
       }
+
       #dialog {
         width: 45%;
         height: 50%
@@ -103,7 +105,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <app-location route="{{route}}"></app-location>
     <app-route
-
         route="{{route}}"
         pattern="/:page"
         data="{{routeData}}"
@@ -115,34 +116,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-toolbar>
           <div main-title id=title style="font-family: 'Merriweather';">RENTIFY</div>
           <a href="/create" class="add">Сдать в аренду</a>
-          <paper-button raised on-click="open"  with-backdrop id="join" >Присоединиться</paper-button>
+          <paper-button on-click="open" class="main-button" >Войти</paper-button>
         </app-toolbar>
       </app-header>
-      
 
-
-<<<<<<< HEAD
        <iron-pages attr-for-selected=name selected=[[page]]>
-          <create-module name=create></create-module>
-          <registration-module name=registration></registration-module>
-
+          <create-module id=create name=create></create-module>
         </iron-pages>
-
     </app-header-layout>
     <paper-dialog id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop
      style="border-radius: 4px">
       <login-module></login-module>
     </paper-dialog>
-  </template>
-=======
-      <iron-pages attr-for-selected=name selected=[[page]]>
-        <create-module id="create" name=create></create-module>
-        <registration-module name=registration></registration-module>
-        <profile-module name="profile"></profile-module>
-      </iron-pages>
 
-    </app-header-layout>
->>>>>>> 6ac7052e35f036ce5a970d67b4bc039b1862219e
+
+    <paper-toast id="toast" text=[[text]]></paper-toast>
+    <paper-toast text="Идет загрузка" duration="0" id="ptoast">
+      <paper-progress value="{{progress}}" class="mw"></paper-progress>
+    </paper-toast>
+
 
     <firebase-app
                   auth-domain="rentify-c9295.firebaseapp.com"
@@ -166,17 +158,53 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       },
 
-
-      attached:function(){
-
-      },
+      behaviors:[
+        DatabaseBehavior
+      ],
 
       observers: [
         '_routePageChanged(routeData.page)'
       ],
 
+      listeners:{
+        'open-toast': 'openToast',
+        'toggle-ptoast':'togglePToast',
+        'progressChanged':'progressChanged',
+        'userChanged':'uChanged',
+        'access-denied': 'noaccess',
+        'show': 'show',
+        'showt':'showt',
+        'exit': 'exit'
+      },
+
+      togglePToast:function(){
+        this.$.ptoast.toggle()
+      },
+
+      progressChanged:function(e){
+        this.progress = e.detail.p
+      },
+
+      exit:function(){
+        Cookies.remove('id',{path:''});
+        Cookies.remove('link',{path:''});
+        Cookies.remove('id',{path:''});
+        Cookies.remove('link',{path:''});
+        localStorage.setItem('user',null);
+        this.$.auth.auth.signOut().then(function() {
+          window.location = '/login';
+        }, function(error) {
+          alert(error);
+        });
+      },
+
+      openToast: function(e){
+        this.text = e.detail.text
+        this.$.toast.open()
+      },
+
       _routePageChanged: function(page) {
-        this.page = page || 'landing';
+        this.page = page || 'home'
       },
 
       _pageChanged: function(page) {
@@ -185,7 +213,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           case "create":
 
             this.importHref(this.resolveUrl(page + '/' + page + '-module.html'), null, this._showPage404, true)
-            this.async(()=>{
+            this.async( ()=>{
               this.$.create.newId()
             },400)
 
@@ -200,12 +228,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _showPage404: function() {
         this.page = 'view404';
       },
-        
+
       open: function() {
-        
+
         console.log(1)
         this.$.dialog.open()
-        
+
       }
     })
   </script>
