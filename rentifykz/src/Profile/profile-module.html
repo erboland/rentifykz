@@ -1,0 +1,37 @@
+<link rel="import" href="/bower_components/paper-menu/paper-menu.html">
+<dom-module id="profile-module">
+<template>
+<style inculde="shared-styles">
+.wrapper{
+width: 100%}
+/*#menu {
+width: 300px;
+height: 200px
+}*/
+</style>
+<iron-grid>
+<div class="wrapper">
+<paper-card>
+       <iron-pages attr-for-selected=name selected=[[page]]>
+          <main name=main></main>
+          <private-info name=registration></private-info>
+          <profile-module name="profile"></profile-module>
+        </iron-pages>
+</paper-card>
+<div id="menu">
+<paper-menu>
+<paper-item>Общее</paper-item>
+<paper-item>Мои вещи</paper-item>
+<paper-item>Приватные данные</paper-item>
+<paper-item>Способы оплаты</paper-item>
+</paper-menu>
+</div>
+</div>
+</iron-grid>
+</template>
+<script>
+Polymer ({
+is: "profile-module"
+})
+</script>
+</dom-module>

@@ -23,6 +23,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-grid/iron-grid.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icons/av-icons.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/iron-list/iron-list.html">
 
@@ -34,9 +35,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog-behavior/paper-dialog-behavior.html">
+<link rel="import" href="../bower_components/paper-dialog-behavior/paper-dialog-shared-styles.html">
 
 <link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animations.html">
+
+<link rel="import" href="Profile/profile-module.html">
+<link rel="import" href="login-module.html">
 
 <link rel="import" href="shared-styles.html">
 <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
@@ -61,7 +67,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .add{
         color: #ff5858;
-        text-decoration: none
+        text-decoration: none;
+          margin-right: 30px
       }
 
       app-toolbar{
@@ -82,6 +89,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       iron-pages {
         height: 100%
       }
+      #join {
+        color: #ff5858;
+        --paper-button-ink-color: var(--paper-pink-a200);
+      }
+      #dialog {
+        width: 45%;
+        height: 50%
+      }
 
     </style>
 
@@ -99,17 +114,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-toolbar>
           <div main-title id=title style="font-family: 'Merriweather';">RENTIFY</div>
           <a href="/create" class="add">Сдать в аренду</a>
+          <paper-button raised on-click="open"  with-backdrop id="join" >Присоединиться</paper-button>
         </app-toolbar>
       </app-header>
+      
 
 
        <iron-pages attr-for-selected=name selected=[[page]]>
           <create-module name=create></create-module>
           <registration-module name=registration></registration-module>
-          <profile-module name="profile"></profile-module>
+
         </iron-pages>
 
     </app-header-layout>
+    <paper-dialog id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop
+     style="border-radius: 4px">
+      <login-module></login-module>
+    </paper-dialog>
   </template>
 
   <script>
@@ -145,8 +166,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _showPage404: function() {
         this.page = 'view404';
+      },
+        
+      open: function() {
+        
+        console.log(1)
+        this.$.dialog.open()
+        
       }
-
-    });
+    })
   </script>
 </dom-module>

@@ -1,0 +1,173 @@
+<link rel="import" href="join-module.html">
+<link rel="import" href="../bower_components/iron-grid/iron-grid.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="behaviors/database-behavior.html">
+
+<dom-module id="login-module">
+  <template>
+  <style include="shared-styles">
+    a{
+      text-decoration: none;
+      color: black;
+      text-align: center;
+      color: black;
+/*      color: var(--app-secondary-color);*/
+      font-size: 15px;
+      font-weight: 600
+    }
+
+    paper-input {
+
+width:100%;
+      border:2px solid var(--paper-grey-300);
+      border-radius: 4px;
+      background-color: white;
+          --paper-input-container-underline:{
+          display: none;
+          height:0px
+        }
+                --paper-input-container-focus-color:rgba(0, 0, 0, 0.0);
+
+    }
+
+    .wrap{
+      height: 91vh;
+    }
+
+    #email{
+      border-radius: 4px 4px 0px 0px;
+      border-bottom:2px solid var(--paper-grey-300);
+    }
+    #password{
+      border-radius: 0px 0px 4px 4px;
+    }
+    .button{
+      background-color: white;
+      background-color: var(--app-secondary-color);
+      margin-top: 8px;
+    }
+
+    .title{
+/*      position: absolute;*/
+      margin-top: 5px;
+      margin-bottom: 14px;
+      color: #ff5858
+    }
+
+    .l4.offset-l4 .content{
+      margin: 0px 80px 0px 80px;
+      overflow: hidden;
+      height: 80vh
+    }
+
+    .offset-xs0-important.xs12-important .content{
+      margin: 0;
+    }
+
+    .button{
+      width: 100%;
+      margin: 0;
+      margin-top: 8px;
+
+    }
+
+    .create{
+      --paper-button:{
+        height: 40px;
+        font-weight: 500;
+        font-size: 14px;
+        padding: 4px 8px
+      }
+    }
+  </style>
+  <iron-grid>
+    <div class="mw" style="overflow: hidden">
+        <div class="content">
+          <div class="title wrapper">
+            <div style="font-size:24px; font-color:black; text-align:center">Арендуй мечту</div>
+          </div>
+          
+
+              <form is="iron-form" id="form" style="padding-right: calc(7% + 4px); padding-left: 7%">
+                <paper-input  on-keydown="checkForEnter" id="email" name="email" no-label-float label="Почта" value="{{email}}" required style="border-bottom: 1px"></paper-input>
+                <paper-input  on-keydown="checkForEnter" id="password" name="password" no-label-float label="Пароль" type="password" value="{{password}}" required></paper-input>
+              </form>
+              <div  style="padding-right: 7%; padding-left: 7%">
+              <paper-button on-tap="login" class="button" style="background-color: #ff5858; color: #fff">Войти</paper-button>
+              <paper-button on-tap="left" class="button" style=" background-color: #fff; color: #ff5858" href="registration-module.html">Создать аккаунт</paper-button>
+          </div>
+
+
+
+        </div>
+      </div>
+  </iron-grid>
+  <firebase-auth id="auth"></firebase-auth>
+  </template>
+  <script>
+
+    Polymer({
+      is: 'login-module',
+
+      properties:{
+        page:{
+          type: Number,
+          value: 0
+        },
+        entryAnimation: String,
+        exitAnimation: String,
+        email: String,
+        password: String
+      },
+
+      behaviors: [
+        Polymer.FirebaseDatabaseBehavior
+      ],
+
+      listeners:{
+        'back':'right'
+      },
+
+      checkForEnter: function(e) {
+
+        if (e.keyCode === 13) this.login()
+      },
+
+      right: function(){
+        this.entryAnimation = 'slide-from-left-animation'
+        this.exitAnimation = 'slide-right-animation'
+        this.page = 0
+      },
+
+      left: function(){
+        this.entryAnimation = 'slide-from-right-animation'
+        this.exitAnimation = 'slide-left-animation'
+        this.page = 1
+      },
+
+      login: function(){
+        const that = this;
+        if(this.$.form.validate()){
+          this.$.auth.signInWithEmailAndPassword(this.email,this.password).then(function(user){
+
+            that.db.ref('Users/' + user.uid + '/info/link').once('value',function(item){
+
+              Cookies.set('id',user.uid,{expires: 10000,path:''});
+              Cookies.set('link',item.val(),{expires: 10000,path:''});
+              window.location = '/message';
+            },function(err){
+
+            });
+          }).catch(function(error){
+            that.fire('open-toast',{
+              text: error
+            })
+          });
+        }
+       }
+    });
+  </script>
+</dom-module>
