@@ -98,7 +98,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       #dialog {
         width: 45%;
-        height: 50%
+
       }
 
     </style>
@@ -120,6 +120,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </app-toolbar>
       </app-header>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a2808a76b8b68109d171a02b710a3714e10802ee
        <iron-pages attr-for-selected=name selected=[[page]]>
           <create-module id=create name=create></create-module>
         </iron-pages>
@@ -128,12 +132,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      style="border-radius: 4px">
       <login-module></login-module>
     </paper-dialog>
+<<<<<<< HEAD
 
 
     <paper-toast id="toast" text=[[text]]></paper-toast>
     <paper-toast text="Идет загрузка" duration="0" id="ptoast">
       <paper-progress value="{{progress}}" class="mw"></paper-progress>
     </paper-toast>
+=======
+  </template>
+
+      <iron-pages attr-for-selected=name selected=[[page]]>
+        <create-module id="create" name=create></create-module>
+        <registration-module name=registration></registration-module>
+        <profile-module name="profile"></profile-module>
+      </iron-pages>
+
+    </app-header-layout>
+>>>>>>> a2808a76b8b68109d171a02b710a3714e10802ee
 
 
     <firebase-app

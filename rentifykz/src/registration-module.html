@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="login-module.html">
 <dom-module id="registration-module">
 <template>
 <style include="shared-styles">
@@ -9,17 +10,19 @@
     color: #fff;
     background-color: #3b5998;
     border-color: rgba(0,0,0,0.2);
-    width: 60%;
+    width: 100%;
     height: 46px;
-    margin-top: 20px;
+  border-radius: 0px
+/*    margin-top: 20px;*/
 }
 .btn-google {
-width: 60%;
+width: 100%;
 height: 46px;
 color: #fff;
     background-color: #dd4b39;
     border-color: rgba(0,0,0,0.2);
-    margin-top: 20px;
+/*    margin-top: 20px;*/
+  border-radius: 0px 0px 4px 4px
 }
 :host{
       width: 100%;
@@ -30,9 +33,8 @@ color: #fff;
       margin-left: 4px
     }
     paper-input {
-      width:60%;
+      width:100%;
       border:2px solid var(--paper-grey-300);
-      border-radius: 4px;
       background-color: white;
           --paper-input-container-underline:{
           display: none;
@@ -48,26 +50,38 @@ color: #fff;
     .label {
     width:100%
     }
+      .button{
+      width: 100%;
+      margin: 0;
+      margin-top: 8px;
+
+    }
 </style>
-<iron-grid>
-<div class="wrapper offset-l3">
-<div class="label" >Имя и Фамилия</div>
-<paper-input no-label-float label="Логин"> <iron-icon icon="icons:perm-identity" prefix></iron-icon></paper-input>
-<div class="label">Почта</div>
-<paper-input no-label-float label="e-mail"><iron-icon icon="icons:mail" prefix></iron-icon></paper-input>
-<div class="label">Пароль</div>
-<paper-input no-label-float label="Пароль" type="password"><iron-icon icon="icons:lock-outline" prefix></iron-icon></paper-input>
-<div class="label" style="height: 20px"></div>
-<paper-button style="width: 60%; height: 46px; background-color: #ff5858; color: #fff">Registrate</paper-button>
+
+<div class="wrapper">
+<form is="iron-form" id="form" style="padding-right: 7%; padding-left: 7%">
+<paper-input no-label-float label="Имя" style="border-bottom:1px; border-radius: 4px 4px 0px 0px"> <iron-icon icon="icons:perm-identity" prefix></iron-icon></paper-input>
+<paper-input no-label-float label="Фамилия" style="border-bottom:1px"><iron-icon icon="icons:perm-identity" prefix></iron-icon></paper-input>
+<paper-input no-label-float label="e-mail" style="border-bottom:1px"><iron-icon icon="icons:mail" prefix></iron-icon></paper-input>
+<paper-input no-label-float label="Пароль" type="password" style="border-radius: 0px 0px 4px 4px"><iron-icon icon="icons:lock-outline" prefix></iron-icon></paper-input>
+  </form>
+  <div style="padding-right: 7%; padding-left: 7%">
+<paper-button style="width: 100%; height: 46px; background-color: #ff5858; color: #fff; border-radius: 4px 4px 0px 0px; margin-top:20px">Registrate</paper-button>
 <paper-button class="btn-facebook">Sign in with Facebook</paper-button>
 <paper-button class="btn-google"> Sign in with Google</paper-button>
-</iron-grid>
+<paper-button on-tap="right" class="button" style=" background-color: #fff; color: #ff5858">Войти</paper-button>
+</div>
+
 </div>
 
 </template>
 <script>
 Polymer({
-is:"registration-module"
+is:"registration-module",
+    right:function(){
+      this.fire('back')
+
+    }
 });
 </script>
 </dom-module>
