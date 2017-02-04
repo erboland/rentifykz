@@ -26,7 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/iron-list/iron-list.html">
 
-<link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
 
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
@@ -39,6 +39,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/neon-animation/neon-animations.html">
 
 <link rel="import" href="shared-styles.html">
+<link rel=import href="behaviors/database-behavior.html">
 <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
 
 <dom-module id="rentify-module">
@@ -103,15 +104,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </app-header>
 
 
-       <iron-pages attr-for-selected=name selected=[[page]]>
-          <create-module name=create></create-module>
-          <registration-module name=registration></registration-module>
-          <profile-module name="profile"></profile-module>
-        </iron-pages>
+      <iron-pages attr-for-selected=name selected=[[page]]>
+        <create-module id="create" name=create></create-module>
+        <registration-module name=registration></registration-module>
+        <profile-module name="profile"></profile-module>
+      </iron-pages>
 
     </app-header-layout>
-  </template>
 
+    <firebase-app
+                  auth-domain="rentify-c9295.firebaseapp.com"
+                  database-url="https://rentify-c9295.firebaseio.com"
+                  api-key="AIzaSyDP92x-2Nr_jePDFA5-4GKSrEBHAIMu5lg"
+                  storage-bucket="rentify-c9295.appspot.com"
+                  app-name="rentify"
+                  >
+    </firebase-app>
+
+  </template>
   <script>
     Polymer({
       is: 'rentify-module',
@@ -138,9 +148,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _pageChanged: function(page) {
-        // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl(page + '-module.html')
-        this.importHref(resolvedPageUrl, null, this._showPage404, true)
+
+        switch(page){
+          case "create":
+
+            this.importHref(this.resolveUrl(page + '/' + page + '-module.html'), null, this._showPage404, true)
+            this.async(()=>{
+              this.$.create.newId()
+            },400)
+
+            break
+
+          default:
+            this.importHref(this.resolveUrl(page + '-module.html'), null, this._showPage404, true)
+            break
+        }
       },
 
       _showPage404: function() {
