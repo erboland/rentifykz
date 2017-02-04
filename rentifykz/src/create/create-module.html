@@ -1,0 +1,165 @@
+<link rel="import" href="../../bower_components/vaadin-combo-box/vaadin-combo-box.html">
+<link rel="import" href="../../bower_components/paper-tags-input/paper-tags-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
+
+<dom-module id="create-module">
+  <template>
+    <style include="shared-styles">
+      :host{
+        width: 100%;
+        height: 100%;
+        display: block
+      }
+      .prefix{
+        color: var(--paper-grey-500);
+        margin-left: 4px
+      }
+      paper-input,paper-textarea,vaadin-combo-box{
+        width:100%;
+        border:2px solid var(--paper-grey-300);
+        border-radius: 4px;
+        background-color: white;
+        --paper-input-container-underline:{
+          display: none;
+          height:0px
+        }
+
+        --paper-input-container:{
+          margin-left: 4px;
+        }
+        --paper-input-container-focus-color:rgba(0, 0, 0, 0.0);
+      }
+
+      #imageContainer{
+        border: dashed 2px var(--paper-grey-300);
+
+      }
+
+      paper-tags-input {
+        border: dashed 2px var(--paper-grey-300);
+        --paper-input-container-underline:{
+          display: none;
+          height:0px;
+        }
+
+        --paper-input-container:{
+          margin-left: 4px;
+        }
+        --paper-input-container-focus-color:rgba(0, 0, 0, 0.0);
+      }
+    </style>
+
+    <iron-grid>
+      <div class="wrapper offset-l3 l6 mw">
+        <h1 class="mw">Новый товар</h1>
+        <div class="label">Название</div>
+        <paper-input no-label-float label="Название"><iron-icon icon="icons:content-paste"  prefix></iron-icon>
+        </paper-input>
+        <div class="label">Категория</div>
+        <vaadin-combo-box no-label-float label="Категория"
+                          items=[[categories]]>
+        </vaadin-combo-box>
+        <div class="label">Описание</div>
+        <paper-textarea no-label-float label="Описание товара" max-rows=5 rows="2"><iron-icon icon="icons:assignment" prefix></iron-icon></paper-textarea>
+
+        <div class="label">Состояние</div>
+        <vaadin-combo-box no-label-float label="Состояние"></vaadin-combo-box>
+        <div class="label">Цена вещи</div>
+        <paper-input no-label-float label="Цена вещи в продаже"></paper-input>
+
+        <div class="label">Изображения</div>
+        <div id=imageContainer class="wrapper mw">
+          <label for="file"><paper-button noink class="main-button">Загрузить</paper-button></label><input type="file" value="upload" id="file" style="position:absolute; visibility:hidden"/>
+          <iron-list items=[[images]] as=image grid>
+            <template></template>
+          </iron-list>
+        </div>
+
+        <div class="label">Теги</div>
+        <paper-tags-input class="mw" no-label-float tag-color="black" placeholder="Добавьте теги товара" tags="{{tags_list}}">><iron-icon icon="icons:search" prefix></iron-icon>
+        </paper-tags-input>
+      </div>
+    </iron-grid>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'create-module',
+
+      properties:{
+
+        categories:{
+          type: Array,
+          value: ["Автомобили",
+                  "Кальян",
+                  "Одежда",
+                  "Игровые приставки",
+                  "Велосипеды",
+                  "Футбольные поля"]
+        },
+
+        images:{
+          type: Array,
+          value:[]
+        }
+
+      },
+
+      behaviors:[
+        DatabaseBehavior
+      ],
+
+      attached: function(){
+        this.$.file.addEventListener('change',(e)=>{
+
+          if(e.target.files[0]){
+
+            this.fire('toggle-ptoast')
+
+            var file = e.target.files[0]
+            var task = this.app.storage().ref('Images/' + Cookies.get('id') + '/' + this.itemId + '/' + file.name).put(file)
+
+            task.on('state_changed', (snapshot) => {
+              this.fire('progressChanged',{p:snapshot.bytesTransferred / snapshot.totalBytes * 100});
+            },(err)=>{
+              alert(err)
+            }, _=>{
+
+              this.getHeight(task.snapshot.downloadURL, ratio => {
+
+                const image = {
+                  src: task.snapshot.downloadURL,
+                  name: file.name,
+                  ratio: ratio
+                }
+
+                this.push('images',image)
+
+                this.fire('toggle-ptoast')
+              })
+
+            })
+          }
+        })
+      },
+
+      getHeight:function(url,callback){
+        const img = new Image();
+
+        img.onload = function(){
+          const ratio = this.width / this.height
+          callback(ratio)
+        };
+        img.src = url;
+      },
+
+      newId: function(){
+        const id = this.db.ref('Items/').push().key
+        this.set('itemId',id)
+      },
+
+    });
+
+  </script>
+</dom-module>

@@ -1,0 +1,24 @@
+<dom-module id="image-module">
+  <template>
+    <style include="shared-styles">
+
+      iron-icon{
+        position: absolute;
+        top: 8px;
+        right: 8px
+      }
+
+    </style>
+    <div id=image style$="background: url('[url]') no-repeat cover">
+      <iron-icon icon="clear"></iron-icon>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'image-module',
+
+    });
+
+  </script>
+</dom-module>
