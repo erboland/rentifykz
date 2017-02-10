@@ -2,19 +2,34 @@
 <dom-module id="main-profile-module">
 <template>
 <style include="shared-styles">
+  .input {
+width= 100%;
+    margin-right: 10%;
+    margin-left: 10%;
+    padding-top: 15px;
+    border-radius: 4px
+  }
+  #image {
+width: 200px;
+    height: 300px;
+    object-position: left;
+    padding-left: 20px
+  }
 </style>
 
 <iron-grid>
 <div class="wrapper">
-<iron-image src="http://lorempixel.com/400/400"></iron-image>
-<paper-input no-label-float label="Имя и фамилия"></paper-input>
-<paper-input no-label-float label="Почта"></paper-input>
-<paper-input no-label-float label="Телефонный номер"></paper-input>
-<script></script>
-<paper-textarea no-label-float label="О себе"></paper-textarea>
+<iron-image src="http://lorempixel.com/400/400" id="image"></iron-image>
+<paper-input no-label-float label="Имя и фамилия" class="input"></paper-input>
+<paper-input no-label-float label="Почта" class="input"></paper-input>
+<paper-input no-label-float label="Телефонный номер" class="input"></paper-input>
+<paper-textarea no-label-float label="О себе" class="input"></paper-textarea>
 </div>
 </iron-grid>
 </template>
 <script>
+  Polymer ({
+   is: "main-profile-module"  
+  })
 </script>
 </dom-module>

@@ -42,7 +42,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animations.html">
 
-<link rel="import" href="Profile/profile-module.html">
+
 <link rel="import" href="login-module.html">
 
 <link rel="import" href="shared-styles.html">
@@ -115,31 +115,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <app-header reveals effect=waterfall condences>
         <app-toolbar>
           <div main-title id=title style="font-family: 'Merriweather';">RENTIFY</div>
-          <a href="/create" class="add">Сдать в аренду</a>
+          <a href="/profile" class="add">Сдать в аренду</a>
           <paper-button on-click="open" class="main-button" >Войти</paper-button>
         </app-toolbar>
       </app-header>
 
-<<<<<<< HEAD
-=======
 
->>>>>>> a2808a76b8b68109d171a02b710a3714e10802ee
        <iron-pages attr-for-selected=name selected=[[page]]>
           <create-module id=create name=create></create-module>
+          <profile-module id=profile name=profile></profile-module>
         </iron-pages>
     </app-header-layout>
     <paper-dialog id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop
      style="border-radius: 4px">
       <login-module></login-module>
     </paper-dialog>
-<<<<<<< HEAD
+
 
 
     <paper-toast id="toast" text=[[text]]></paper-toast>
     <paper-toast text="Идет загрузка" duration="0" id="ptoast">
       <paper-progress value="{{progress}}" class="mw"></paper-progress>
     </paper-toast>
-=======
+
   </template>
 
       <iron-pages attr-for-selected=name selected=[[page]]>
@@ -149,7 +147,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </iron-pages>
 
     </app-header-layout>
->>>>>>> a2808a76b8b68109d171a02b710a3714e10802ee
+
 
 
     <firebase-app
@@ -234,6 +232,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             },400)
 
             break
+          
+            case "profile":
+            this.importHref(this.resolveUrl(page + '/' + page + '-module.html'), null, this._showPage404, true)
+            this.async( ()=> {
+this.$.create.newID()
+            }, 400)
 
           default:
             this.importHref(this.resolveUrl(page + '-module.html'), null, this._showPage404, true)
