@@ -143,7 +143,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <iron-pages attr-for-selected=name selected=[[page]]>
         <create-module id="create" name=create></create-module>
         <registration-module name=registration></registration-module>
-        <profile-module name="profile"></profile-module>
+        <profile-module id="profile" name="profile"></profile-module>
       </iron-pages>
 
     </app-header-layout>
@@ -235,9 +235,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           
             case "profile":
             this.importHref(this.resolveUrl(page + '/' + page + '-module.html'), null, this._showPage404, true)
-            this.async( ()=> {
-this.$.create.newID()
-            }, 400)
+            console.log(page + '/' + page + '-module.html')
+            break
 
           default:
             this.importHref(this.resolveUrl(page + '-module.html'), null, this._showPage404, true)

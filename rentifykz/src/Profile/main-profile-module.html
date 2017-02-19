@@ -1,29 +1,43 @@
-<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="/bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
+
 <dom-module id="main-profile-module">
 <template>
 <style include="shared-styles">
+        :host{
+        width: 100%;
+        height: 100%;
+        display: block
+      }
   .input {
-width= 100%;
-    margin-right: 10%;
-    margin-left: 10%;
-    padding-top: 15px;
-    border-radius: 4px
-  }
+margin-bottom: 10px
+}
+  
   #image {
 width: 200px;
-    height: 300px;
-    object-position: left;
-    padding-left: 20px
+    height: 200px;
+margin-left: 20px;
+    border-radius: 100px;
+  }
+
+  .wrapper {
+width: 100%
   }
 </style>
 
 <iron-grid>
 <div class="wrapper">
-<iron-image src="http://lorempixel.com/400/400" id="image"></iron-image>
+
+<iron-image src="http://lorempixel.com/400/400" id="image" sizing="cover"></iron-image>
+<div class="label"> Ваше имя</div>
 <paper-input no-label-float label="Имя и фамилия" class="input"></paper-input>
+<div class="label"> Ваш email</div>
 <paper-input no-label-float label="Почта" class="input"></paper-input>
+<div class="label"> Ваш телефонный номер</div>
 <paper-input no-label-float label="Телефонный номер" class="input"></paper-input>
-<paper-textarea no-label-float label="О себе" class="input"></paper-textarea>
+<div class="label"> Расскажите о себе</div>
+<paper-textarea no-label-float label="О себе" max-rows=5 rows="2"></paper-textarea>
+<paper-button class="main-button offset-l4" style="margin: 16px 0px;">Сохранить</paper-button>
 </div>
 </iron-grid>
 </template>

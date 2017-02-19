@@ -1,50 +1,69 @@
 <link rel="import" href="/bower_components/paper-menu/paper-menu.html">
+<link rel="stylesheet" href="/bower_components/paper-menu/paper-submenu.html">
+<link rel="import" href="main-profile-module.html">
+<link rel="stylesheet" href="payment-information-profile-module.html">
+<link rel="import" href="private-information-profile-module.html">
+<link rel="import" href="my-items-profile-module.html">
+<link rel="import" href="/bower_components/paper-item/paper-item.html">
 <dom-module id="profile-module">
 <template>
 <style inculde="shared-styles">
-.wrapper{
-width: 100%}
-  #categories {
-    
+.categories {
+margin-top: 15px;
+    height: 208px;
+    padding: 0 !important;
+  }
+  .main {
+    margin-top: 15px
+  }
+      paper-item {
+      --paper-item: {
+        cursor: pointer;
+      };
+    }
+  paper-card {
+    width:100%
   }
 </style>
 <iron-grid>
-<div class="wrapper">
-<paper-card id="main">
-       <iron-pages selected=0 id="pages">
+<div class="main offset-l3 l6" >
+<paper-card>
+      <iron-pages selected=0 id="pages">
           <main-profile-module></main-profile-module>
           <my-items-profile-module></my-items-profile-module>
           <private-information-profile-module></private-information-profile-module>
           <payment-information-profile-module></payment-information-profile-module>
         </iron-pages>
+        
 </paper-card>
-<paper-card id="categories"></paper-card>
-<div id="menu">
-<paper-menu id="categories">
-<paper-item on-tap="first">Общее</paper-item>
-<paper-item on-tap="second">Мои вещи</paper-item>
-<paper-item on-tap="third">Приватные данные</paper-item>
-<paper-item on-tap="fourth">Способы оплаты</paper-item>
-</paper-menu>
 </div>
+<div class="categories l2">
+<paper-card>
+    <paper-menu>
+      <paper-item on-tap="first">Общее</paper-item>
+      <paper-item on-tap="second">Мои вещи</paper-item>
+      <paper-item on-tap="third">Приватное</paper-item>
+    <paper-item on-tap="fourth">Оплата</paper-item>
+</paper-menu>
+</paper-card>
 </div>
 </iron-grid>
 </template>
 <script>
 Polymer ({
-is: "profile-module",
-  first: function () {
-this.$.pages.selected=0
-  },
-    second: function () {
-this.$.pages.selected=1
-  },
-    third: function () {
-this.$.pages.selected=2
-  },
-    fourth: function () {
-this.$.pages.selected=3
-  }
+  is: "profile-module",
+    first: function () {
+ this.$.pages.selected=0
+   },
+     second: function () {
+ this.$.pages.selected=1
+   },
+     third: function () {
+ this.$.pages.selected=2
+   },
+     fourth: function () {
+ this.$.pages.selected=3
+   }
 })
 </script>
 </dom-module>
