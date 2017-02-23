@@ -1,53 +1,63 @@
 <link rel="import" href="/bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="/bower_components/paper-styles/color.html">
 <link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="./icons-reusable.html">
+<link rel="import" href="/bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <dom-module id="my-items-profile-module">
 <template>
-<style include="shared-styles">
-
-  #notes {
+<style include="shared-styles iron-flex iron-flex-alignment">
+  paper-card.white {
+    --paper-card-header-color: #fff;
+  };
+/*
+  .card {
     @apply(--layout-vertical);
     @apply(--layout-wrap);
     height: 344px;
     width: 384px;
   }
-
-  #notes > paper-card {
+*/
+    .card > paper-card {
     box-sizing: border-box;
-    max-width: 184px;
+    max-width: 300px;
     margin: 4px;
     flex: 0 0 auto;
   }
 </style>
 
 <iron-grid>
-<div id="notes">
-  <paper-card heading="Call Jennifer" class="cyan">
+<div class="card">
+<paper-card heading="Pre-fab homes" image="/images/download.jpeg" alt="House" class="white" style="margin-bottom:8px;">
+  <div class="card-actions">
+<icons-reusable></icons-reusable>
+  </div>
+</paper-card>
+  </div>
+<div class="card">
+  <paper-card heading="Favorite trips" image="/images/download (1).jpeg" alt="Trip" class="white" style="margin-right:4px;">
     <div class="card-actions">
-      <paper-icon-button icon="communication:call" style="color:white;"></paper-icon-button>
-      <span>March 19, 2017</span>
+<icons-reusable></icons-reusable>
     </div>
   </paper-card>
-  <paper-card class="dark">
-    <div class="card-content">
-      <p>Groceries:</p>
-      <paper-checkbox>almond milk</paper-checkbox>
-      <paper-checkbox>coconut water</paper-checkbox>
-      <paper-checkbox>cheese</paper-checkbox>
-      <paper-checkbox>green apples</paper-checkbox>
-    </div>
+  </div>
+  <div class="card">
+  <paper-card heading="Best airlines" image="/images/download (2).jpeg" alt="Travel" class="white" style="margin-left:4px;">
     <div class="card-actions">
-      <paper-icon-button icon="communication:location-on" style="color:white"></paper-icon-button>
-      <span>Campbell</span>
+<icons-reusable></icons-reusable>
     </div>
   </paper-card>
-  <paper-card heading="clean desk" class="lime"></paper-card>
-  <paper-card image="./donuts.png" alt="Donuts" class="amber">
-    <div class="card-content">New cafe opened on Valencia St.</div>
-  </paper-card>
-  <paper-card heading="Yuna tickets on sale 6/24" class="cyan">
-  </paper-card>
-</div>
+  </div>
+  <div class="card">
+<paper-card heading="Kostyum" image="/images/download (3).jpeg" alt="House" class="white" style="margin-bottom:8px;">
+  <div class="card-actions">
+<icons-reusable></icons-reusable>
+  </div>
+    </paper-card>
+  </div>
+
+
 </iron-grid>
 </template>
 <script>
@@ -56,3 +66,4 @@ is: "my-items-profile-module"
 })
 </script>
 </dom-module>
+
