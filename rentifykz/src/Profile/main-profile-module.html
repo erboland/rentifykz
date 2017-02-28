@@ -23,6 +23,15 @@ margin-left: 20px;
   .wrapper {
 width: 100%
   }
+  .exit {
+    background-color: var(--paper-red-500);
+        color: white;
+        height: 36px;
+        font-size: 16px;
+        margin-left: 0;
+        font-weight: 500;
+    width:100%"
+}
 </style>
 
 <iron-grid>
@@ -38,6 +47,7 @@ width: 100%
 <div class="label"> Расскажите о себе</div>
 <paper-textarea no-label-float label="О себе" max-rows=5 rows="2"></paper-textarea>
 <paper-button class="main-button offset-l4" style="margin: 16px 0px;">Сохранить</paper-button>
+<paper-button class="exit offset-l4" style="margin: 16px 0px;">Выход</paper-button>
 </div>
 </iron-grid>
 </template>

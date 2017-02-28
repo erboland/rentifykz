@@ -122,6 +122,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
        <iron-pages attr-for-selected=name selected=[[page]]>
+         <landing-module id=main name=main></landing-module>
           <create-module id=create name=create></create-module>
           <profile-module id=profile name=profile></profile-module>
         </iron-pages>
@@ -218,7 +219,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _routePageChanged: function(page) {
-        this.page = page || 'home'
+        this.page = page || 'landing'
       },
 
       _pageChanged: function(page) {

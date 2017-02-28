@@ -1,12 +1,52 @@
 <dom-module id="private-information-profile-module">
 <template>
 <style include="shared-styles">
+  paper-input {
+    margin-bottom: 15px
+  }
+  hr {
+    display: block;
+    height: 1px;
+    border: 2;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+  .customHr {
+    width: 95%
+    font-size: 1px;
+    color: rgba(0, 0, 0, 0);
+    line-height: 2px;
+    
+    background-color: var(--paper-grey-400);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+  h3 {
+font-size: 36px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 </style>
 
 <iron-grid>
 <div class="wrapper">
+<h3 style="margin-top: 0px">Основное</h3>
+<div class="label">Фамилия Имя Отчество</div>
+<paper-input no-label-float label="Ф.И.О."></paper-input>
+<div class="label">Когда вы родились?</div>
+<paper-input no-label-float label="Дата рождения"></paper-input>
+<div class="customHr">.</div>
+<h3>Данные удостоверения личности</h3>
+<div class="label">Номер удостоверения личности</div>
+<paper-input no-label-float label="Номер удостоверения личности" type="number"></paper-input>
+<div class="label">Ваш ИИН</div>
+<paper-input no-label-float label="ИИН"></paper-input>
+<div class="label">Дата выдачи</div>
+<paper-input no-label-float label="Когда выдан" type="number"></paper-input>
 
 </div>
+
 </iron-grid>
 </template>
 <script>

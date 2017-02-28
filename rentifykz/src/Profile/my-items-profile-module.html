@@ -21,13 +21,25 @@
 */
     .card > paper-card {
     box-sizing: border-box;
-    max-width: 300px;
+    max-width: 48%;
     margin: 4px;
     flex: 0 0 auto;
   }
+  .container {
+      padding: 10px;
+max-width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap; 
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+  
 </style>
 
 <iron-grid>
+<div class="container">
 <div class="card">
 <paper-card heading="Pre-fab homes" image="/images/download.jpeg" alt="House" class="white" style="margin-bottom:8px;">
   <div class="card-actions">
@@ -55,6 +67,7 @@
 <icons-reusable></icons-reusable>
   </div>
     </paper-card>
+  </div>
   </div>
 
 

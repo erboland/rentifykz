@@ -1,14 +1,11 @@
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
-
+<link rel="import" href="/bower_components/paper-carousel/demo/index.html">
+<link rel="import" href="/bower_components/paper-carousel/paper-carousel.html">
+<link rel="import" href="/bower_components/awesome-slider/awesome-slider.html">
+ 
 <dom-module id="landing-module">
   <template>
     <style include="shared-styles">
-
-/*
-      iron-grid{
-        background-color: var(--app-secondary-color)
-      }
-*/
 
       .head{
         height: 70vh
@@ -27,49 +24,31 @@
       .cats{
         color: var(--paper-grey-600)
       }
+      #head {
+        width: 100%;
+        height: 575;
+      }
 
     </style>
 
     <iron-grid>
-      <div class="head offset-l1 l10 layout vertical horizontal center-center">
-        <div style="text-align:center;font-size:50px">RENTIFY.KZ - арендуйте мечту</div>
-        <div style="width:400px">
-          <paper-input label="Что вы хотите aрендовать?" no-label-float class="mw">
-            <iron-icon icon="icons:search" prefix></iron-icon>
-          </paper-input>
-        </div>
-
-      </div>
-      <div class="offset-l1 l10 mw">
-
-        <h1 class="cats">Категории</h1>
-        <iron-list class="mw" items="[[categories]]" as="category" grid>
-          <template>
-            <div class="wrapper">
-              <paper-card class="category layout vertical horizontal center-center">
-                [[category]]
-              </paper-card>
-            </div>
-
-          </template>
-        </iron-list>
-
-      </div>
-      <div class="offset-l1 l10 mw">
-
-        <h1 class="cats">Категории</h1>
-        <iron-list class="mw" items="[[categories]]" as="category" grid>
-          <template>
-            <div class="wrapper">
-              <paper-card class=" layout vertical horizontal center-center">
-                [[category]]
-              </paper-card>
-            </div>
-
-          </template>
-        </iron-list>
-
-      </div>
+<div id="head">
+<awesome-slider pre-image="/images/" autostart="true" bullets="true">
+    <item source="/images/download%20(1).jpeg"></item>
+    <item source="/images/download%20(2).jpeg"></item>
+    <item source="/images/download%20(3).jpeg"></item>
+</awesome-slider>
+<!--
+  <paper-carousel items="1" dotText="false">
+    <img src="https://unsplash.it/800/500/?image=257" draggable="false"/>
+    <img src="https://unsplash.it/800/500/?image=250" draggable="false"/>
+    <img src="https://unsplash.it/800/500/?image=399" draggable="false"/>
+    <img src="https://unsplash.it/800/500/?image=146" draggable="false"/>
+    <img src="https://unsplash.it/800/500/?image=248" draggable="false"/>
+</paper-carousel>
+-->
+</div>
+   
     </iron-grid>
   </template>
 
@@ -77,27 +56,9 @@
     Polymer({
       is: 'landing-module',
 
-      properties:{
-        categories: {
-          type: Array,
-
-          value:[
-            'Автомобили',
-            'Кальян',
-            'Одежда',
-            'Игровые приставки',
-            'Велосипеды',
-            'Футбольные поля',
-
-          ]
-        }
-      },
-
       attached: function(){
         const list = Polymer.dom(this.root).querySelector('iron-list');
-        if(list){
-          list.scrollTarget = this.ownerDocument.documentElement;
-        }
+console.log ("1234")
       }
     });
   </script>
