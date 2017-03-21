@@ -8,7 +8,7 @@
     <style include="shared-styles">
 
       .head{
-        height: 70vh
+        height: window.height
       }
 
       .category {
@@ -29,26 +29,61 @@
         height: 575;
       }
 
+      section {
+height: 300px
+      }
+      .photo-wrapper{
+        height: 500px
+      }
+
     </style>
 
     <iron-grid>
+    <div class="mw">
 <div id="head">
-<awesome-slider pre-image="/images/" autostart="true" bullets="true">
-    <item source="/images/download%20(1).jpeg"></item>
-    <item source="/images/download%20(2).jpeg"></item>
-    <item source="/images/download%20(3).jpeg"></item>
+<awesome-slider pre-image="/images/" autostart="true" >
+    <item source="/images/one.jpg"></item>
+    <item source="/images/two.jpg"></item>
+    <item source="/images/three.jpg"></item>
 </awesome-slider>
-<!--
-  <paper-carousel items="1" dotText="false">
-    <img src="https://unsplash.it/800/500/?image=257" draggable="false"/>
-    <img src="https://unsplash.it/800/500/?image=250" draggable="false"/>
-    <img src="https://unsplash.it/800/500/?image=399" draggable="false"/>
-    <img src="https://unsplash.it/800/500/?image=146" draggable="false"/>
-    <img src="https://unsplash.it/800/500/?image=248" draggable="false"/>
-</paper-carousel>
--->
 </div>
-   
+
+<section class="mw layout horizontal">
+      <div class="left l6">
+         <div>Love cows</div>
+       </div>
+       <div class="right l6">
+         <div>love sheeps</div>
+       </div>
+       </section>
+      <section class="photo-wrapper">
+        <iron-image src="http://lorempixel.com/1265/500/"></iron-image>
+      </section>
+
+     <hr>
+    <section class="mw layout horizontal">
+       <div class="left l6">
+         <div>Love cows</div>
+       </div>
+       <div class="right l6">
+         <div>love sheeps</div>
+       </div>
+       </section>
+       <section class="photo-wrapper">
+        <iron-image src="http://lorempixel.com/1265/500/"></iron-image>
+      </section>
+     <hr>
+    <section class="mw layout horizontal">     
+      <div class="left l6">
+         <div>Love cows</div>
+       </div>
+       <div class="right l6">
+         <div>love sheeps</div>
+       </div>
+    </section>
+  
+    
+      </div>
     </iron-grid>
   </template>
 
