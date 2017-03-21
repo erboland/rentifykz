@@ -1,0 +1,75 @@
+<dom-module>
+  <template>
+    <style include="shared-styles">
+      .heading {
+        height: 252px;
+        width: 100%;
+        
+      }
+      .content{
+        margin-left: 8%;
+        margin-right: 8%;
+        margin-top: 80px;
+        margin-bottom: 80px;
+      }
+      .profile-image{
+        border-radius: 100;
+        height: 40px;
+        width:40px;
+      }
+      paper-card{
+        padding: 8px;
+        height: 400px;
+        width: 220px;
+      }
+      .card-content {
+        height:250px ;
+      }
+      .card-actions{
+        height: 50px;
+      }
+      
+    </style>
+    <iron-grid>
+    <div class="mw">
+      <section class="heading layout horizontal">
+        <div class="content">
+          <span>Show me </span>
+          <vaadin-combo-box></vaadin-combo-box>
+          <span>Tagged-with</span>
+          <vaadin-combo-box></vaadin-combo-box>
+          
+        </div> 
+      </section>
+        
+      
+      <div class="items layout horizontal">
+       <ul>
+        <paper-card heading="Имя товара" image="" alt="item-name" class="item">
+          <div class="card-content">Очень красивый и реaльно просто офигенный товар </div>
+          <div class="card-actions">
+           <div >
+            <iron-image src="" class="profile-image"></iron-image>
+           </div>
+           <div >
+             <p>Имя владельца</p>
+           </div>
+          </div>
+        </paper-card>
+        </ul>
+      </div>
+      
+    </div>
+    </iron-grid>
+  </template>
+  <script>
+  Polymer ({
+    is: "item-explore-module",
+    attached: function () {
+      console.log ("Love koreans")
+    }
+      
+    }
+  })
+  </script>
+</dom-module>
