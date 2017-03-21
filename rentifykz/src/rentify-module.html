@@ -120,12 +120,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </app-toolbar>
       </app-header>
 
-
-       <iron-pages attr-for-selected=name selected=[[page]]>
-         <landing-module id=landing name=landing></landing-module>
-          <create-module id=create name=create></create-module>
-          <profile-module id=profile name=profile></profile-module>
-        </iron-pages>
+      <iron-pages attr-for-selected=name selected=[[page]]>
+        <landing-module id=landing name=landing></landing-module>
+        <create-module id=create name=create></create-module>
+        <profile-module id=profile name=profile></profile-module>
+        <item-module id=item name=item></item-module>
+      </iron-pages>
     </app-header-layout>
     <paper-dialog id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop
      style="border-radius: 4px">
@@ -138,18 +138,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <paper-toast text="Идет загрузка" duration="0" id="ptoast">
       <paper-progress value="{{progress}}" class="mw"></paper-progress>
     </paper-toast>
-
-  </template>
-
-      <iron-pages attr-for-selected=name selected=[[page]]>
-        <create-module id="create" name=create></create-module>
-        <registration-module name=registration></registration-module>
-        <profile-module id="profile" name="profile"></profile-module>
-      </iron-pages>
-
-    </app-header-layout>
-
-
 
     <firebase-app
                   auth-domain="rentify-c9295.firebaseapp.com"
@@ -231,16 +219,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.async( ()=>{
               this.$.create.newId()
             },400)
-
             break
-          
-            case "profile":
+
+          case "profile":
             this.importHref(this.resolveUrl(page + '/' + page + '-module.html'), null, this._showPage404, true)
             console.log(page + '/' + page + '-module.html')
             break
 
           default:
-            this.importHref(this.resolveUrl(page + '-module.html'), null, this._showPage404, true)
+
+            this.importHref(this.resolveUrl(`${page}/${page}-module.html`), null, this._showPage404, true)
             break
         }
       },
