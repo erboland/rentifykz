@@ -16,7 +16,68 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <style include="iron-flex iron-flex-alignment">
       .mw{
-        width: 100%
+        width: 100%;
+      }
+
+      .mh{
+        height: 100%
+      }
+
+      .wrapper{
+        padding: 8px
+      }
+
+      .fw300{
+        font-weight: 300
+      }
+      .fw500{
+        font-weight: 500
+      }
+      .fw600{
+        font-weight: 600
+      }
+      .fw700{
+        font-weight: 700
+      }
+      .fw800{
+        font-weight: 800
+      }
+      .fs16{
+        font-size: 16px
+      }
+      .fs18{
+        font-size: 18px
+      }
+      .fs20{
+        font-size: 20px
+      }
+      .fs22{
+        font-size: 22px
+      }
+
+      .fc100{
+        color: var(--paper-grey-100)
+      }
+      .fc200{
+        color: var(--paper-grey-200)
+      }
+      .fc300{
+        color: var(--paper-grey-300)
+      }
+      .fc400{
+        color: var(--paper-grey-400)
+      }
+      .fc500{
+        color: var(--paper-grey-500)
+      }
+      .fc600{
+        color: var(--paper-grey-600)
+      }
+      .fc700{
+        color: var(--paper-grey-700)
+      }
+      .fc800{
+        color: var(--paper-grey-800)
       }
 
       .wrapper{
@@ -36,13 +97,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .label {
         margin-top: 16px;
         color: var(--paper-grey-600);
-        margin-left: 4px
+      }
+
+      .input-wrap{
+        padding: 0px 4px;
+        border: 2px solid var(--paper-grey-300);
+        border-radius: 4px;
+        margin-bottom: 8px;
       }
 
       paper-input,paper-textarea,vaadin-combo-box{
         width:100%;
-        border:2px solid var(--paper-grey-300);
-        border-radius: 4px;
         background-color: white;
         --paper-input-container-underline:{
           display: none;
@@ -63,6 +128,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-left: 0;
         font-weight: 500
       }
+
+
     </style>
   </template>
 </dom-module>
