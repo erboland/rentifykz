@@ -1,16 +1,33 @@
-<dom-module>
+<dom-module id="item-explore-module">
   <template>
     <style include="shared-styles">
+/*
       .heading {
         height: 252px;
         width: 100%;
         
       }
+*/
       .content{
         margin-left: 8%;
         margin-right: 8%;
         margin-top: 80px;
         margin-bottom: 80px;
+      }
+      vaadin-combo-box {
+        width: auto;
+        height: 25px;
+        border-radius: 4px;
+        
+      }
+      span{
+        font-size: 25px
+      }
+      .item-image{
+        width:100%;
+        height:150px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
       }
       .profile-image{
         border-radius: 100;
@@ -18,9 +35,10 @@
         width:40px;
       }
       paper-card{
-        padding: 8px;
-        height: 400px;
-        width: 220px;
+        margin: 8px;
+        height: 500px;
+        width: 300px;
+        border-radius: 4px;
       }
       .card-content {
         height:250px ;
@@ -32,22 +50,28 @@
     </style>
     <iron-grid>
     <div class="mw">
-      <section class="heading layout horizontal">
-        <div class="content">
+      <section class="heading" style="height:252px; width: 100%; margin-top: 0">
+        <div class="content layout horizontal">
           <span>Show me </span>
+          <div></div>
           <vaadin-combo-box></vaadin-combo-box>
           <span>Tagged-with</span>
           <vaadin-combo-box></vaadin-combo-box>
-          
+          <span>Sorted by</span>
+          <vaadin-combo-box></vaadin-combo-box>
         </div> 
       </section>
-        
+        <hr>
       
       <div class="items layout horizontal">
        <ul>
-        <paper-card heading="Имя товара" image="" alt="item-name" class="item">
-          <div class="card-content">Очень красивый и реaльно просто офигенный товар </div>
-          <div class="card-actions">
+        <paper-card class="item">
+         <iron-image src="http://lorempixel.com/300/150/" class="item-image"></iron-image>
+          <div class="card-content">
+            <a href="" class="label">Название товара</a>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo fuga obcaecati iure libero dolores saepe consequuntur aliquam quae provident aut! Voluptates est asperiores, quis optio assumenda atque minima numquam consequatur!</p>
+          </div>
+          <div class="card-actions layout horizontal">
            <div >
             <iron-image src="" class="profile-image"></iron-image>
            </div>
@@ -69,7 +93,7 @@
       console.log ("Love koreans")
     }
       
-    }
-  })
+    
+  });
   </script>
 </dom-module>
