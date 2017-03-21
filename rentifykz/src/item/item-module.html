@@ -1,0 +1,56 @@
+<dom-module id="item-module">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .main-image{
+        width: 100vw;
+        height: 75vh
+      }
+
+      paper-tabs{
+        font-size: 20px;
+        color: var(--paper-grey-500);
+        --paper-tabs-selection-bar-color: var(--app-primary-color);
+      }
+
+      paper-tabs .iron-selected{
+        color:  var(--app-primary-color);
+      }
+    </style>
+    <div>
+      <iron-image class="main-image" src="https://a0.muscache.com/im/pictures/53992414/64510035_original.jpg?aki_policy=xx_large"></iron-image>
+      <iron-grid>
+        <div class="offset-l2 l4">
+          <paper-tabs selected={{selected}}>
+            <paper-tab>Обзор</paper-tab>
+            <paper-tab>Отзывы</paper-tab>
+            <paper-tab>Владелец</paper-tab>
+            <paper-tab>Адрес</paper-tab>
+          </paper-tabs>
+          <iron-pages selected={{selected}}>
+            <item-overview-module></item-overview-module>
+            <item-reviews-module></item-reviews-module>
+            <item-owner-module></item-owner-module>
+            <item-location-module></item-location-module>
+          </iron-pages>
+        </div>
+      </iron-grid>
+    </div>
+
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'item-module',
+
+      attached:function(){
+        console.log('relfo')
+      }
+
+    });
+  </script>
+</dom-module>
